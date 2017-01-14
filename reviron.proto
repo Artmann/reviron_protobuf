@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package reviron;
+
+
+service Reviron {
+    rpc AddUser(User) returns (User) {}
+    rpc AddItem(Item) returns (Item) {}
+    rpc AddRating(Rating) returns (Rating) {}
+    rpc MakeRecommendation(RecommendationRequest) returns (stream Recommendation) {}
+}
+
+message User {
+    string id = 1;
+}
+
+message Item {
+    string id = 1;
+    string type = 2;
+}
+
+message Rating {
+    User user = 1;
+    Item item = 2;
+    float rating = 3;
+}
+
+message RecommendationRequest {
+    User user = 1;
+    string itemType = 2;
+}
+
+message Recommendation {
+    Item item = 1;
+    float rating = 2;
+}

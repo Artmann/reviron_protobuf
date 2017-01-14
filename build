@@ -1,0 +1,1 @@
+protoc -I . reviron.proto --go_out=plugins=grpc:.
